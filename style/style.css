@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Ms Madi', cursive;
+    background-image: url("../img/wallpaper-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-family: 'Ms Madi', cursive;
+}
+
+img {
+    width: 100px;
+    height: 130px;
+    border-radius: 10px;
+}
+
+.summary {
+    margin-top: 10px;
+}
+
+.score,
+.summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.score div {
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.main {
+    margin: 10px auto;
+    width: fit-content;
+}
+
+.tablet {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+    justify-content: center;
+}
+
+.tablet-item {
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.hiden {
+    opacity: 0;
+}
+
+.newGameBtn {
+    margin: 0 auto;
+    padding: 2px;
+    font-family: 'Ms Madi', cursive;
+    font-size: 1.5em;
+}
