@@ -49,9 +49,14 @@
         <div class="tablet" id="tablet">
             {{matrix}}
         </div>
-        <div id="buttonBlock" class="buttonBlock">
-            <button id="newGameBtn" class="newGameBtn">New Game</button>
+        <div id="gamesButtons" class="buttonBlock">
+            <button id="resetGameBtn" class="gameBtn">Reset</button>
+            <button id="menuGameBtn" class="gameBtn">Menu</button>
         </div>
+    </script>
+
+    <script type="text/html" id="menuTemplate">
+        <button id="{{number}}" class="menuBtn">{{number}} Cards</button>
     </script>
 
     <script src="./utils/сonstant.js"></script>
@@ -59,11 +64,13 @@
     <script src="./Modell/BaseModel.js"></script>
     <script src="./Modell/MatrixModel.js"></script>
     <script src="./Modell/SummaryModel.js"></script>
+    <script src="./Modell/MenuModel.js"></script>
     <script src="./utils/Controller.js"></script>
     <script src="./View/BaseView.js"></script>
     <script src="./View/CardView.js"></script>
     <script src="./View/MatrixView.js"></script>
     <script src="./View/SummaryView.js"></script>
+    <script src="./View/MenuView.js"></script>
     <script src="./View/AppView.js"></script>
 </body>
 

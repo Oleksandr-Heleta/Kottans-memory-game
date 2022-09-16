@@ -9,7 +9,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-direction: column;
     height: 100vh;
 }
@@ -22,6 +22,14 @@ img {
     width: 100px;
     height: 130px;
     border-radius: 10px;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .summary {
@@ -63,15 +71,20 @@ img {
 }
 
 .buttonBlock {
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
 }
 
-.newGameBtn {
-    margin: 0 auto;
+.menuBtn,
+.gameBtn {
+    margin: 10px;
+    width: 150px;
     padding: 2px;
     font-family: 'Ms Madi', cursive;
     font-size: 1.5em;
 }
+
 
 @media (max-width: 460px) {
     body {
@@ -88,4 +101,8 @@ img {
         border-radius: 5px;
     }
 
+    .menuBtn,
+    .gameBtn {
+        width: 100px;
+    }
 }

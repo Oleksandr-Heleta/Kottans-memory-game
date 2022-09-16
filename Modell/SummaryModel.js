@@ -1,9 +1,10 @@
 class SummaryModel extends BaseModel {
     constructor() {
         super();
+        this.level = LEVEL_BUTTONS[0]
         this.attributes = {
             totalScore: 0,
-            bestScore: JSON.parse(localStorage.getItem('bestScore')) || 0,
+            bestScore: JSON.parse(localStorage.getItem(`bestScore${this.level}`)) || 0,
         };
         if (!SummaryModel.instance) {
             SummaryModel.instance = this;
@@ -14,19 +15,28 @@ class SummaryModel extends BaseModel {
 
     startNewGame() {
         this.attributes.totalScore = 0;
-        this.publish('changeData');
+        this.publish(CHANGE_DATA);
     }
 
     makeActionByClickCard(addCount) {
         this.attributes.totalScore += addCount;
-        this.publish('changeData');
+        localStorage.setItem(`totalScore${this.level}`, JSON.stringify(this.attributes.totalScore));
+        this.publish(CHANGE_DATA);
     }
 
     checkBestResult(status) {
         if (status !== "end") { return; }
         if (this.attributes.totalScore < this.attributes.bestScore || this.attributes.bestScore === 0) {
             this.attributes.bestScore = this.attributes.totalScore;
-            localStorage.setItem('bestScore', JSON.stringify(this.attributes.bestScore));
+            localStorage.setItem(`bestScore${this.level}`, JSON.stringify(this.attributes.bestScore));
+        }
+    }
+
+    setCardAmount(level) {
+        this.level = level;
+        this.attributes = {
+            totalScore: JSON.parse(localStorage.getItem(`totalScore${this.level}`)) || 0,
+            bestScore: JSON.parse(localStorage.getItem(`bestScore${this.level}`)) || 0
         }
     }
 }

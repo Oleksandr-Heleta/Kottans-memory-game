@@ -3,15 +3,20 @@ class MatrixModel extends BaseModel {
     constructor() {
         super();
         this.imgSource = IMAGE_URL;
-        this.cardAmount = 16;
+        this.cardAmount = LEVEL_BUTTONS[0];
         this.cardToCompare = null;
-        this.attributes = JSON.parse(localStorage.getItem('attributes')) || this.createRandomList();
+        this.attributes = JSON.parse(localStorage.getItem(`attributes${this.cardAmount}`)) || this.createRandomList();
         if (!MatrixModel.instance) {
             MatrixModel.instance = this;
         }
 
         return MatrixModel.instance;
 
+    }
+
+    setCardAmount(amount) {
+        this.cardAmount = amount;
+        this.attributes = JSON.parse(localStorage.getItem(`attributes${this.cardAmount}`)) || this.createRandomList();
     }
 
     createRandomList() {
@@ -32,33 +37,34 @@ class MatrixModel extends BaseModel {
             };
             arrRandomPosition.splice(indexElement, 1);
         }
-        localStorage.setItem('attributes', JSON.stringify(cardsList));
+        localStorage.setItem(`attributes${this.cardAmount}`, JSON.stringify(cardsList));
         return cardsList;
     }
 
     makeActionByClickCard(cardId, cardDataId) {
         if (this.cardToCompare) {
             if (this.cardToCompare.cardDataId === cardDataId && this.cardToCompare.cardId !== cardId) {
-                this.changeStatys('hiden', this.cardToCompare.cardId, cardId);
-                localStorage.setItem('attributes', JSON.stringify(this.attributes));
+                this.changeStatus('hiden', this.cardToCompare.cardId, cardId);
+                localStorage.setItem(`attributes${this.cardAmount}`, JSON.stringify(this.attributes));
             } else {
-                this.changeStatys('hover', this.cardToCompare.cardId, cardId)
+                this.changeStatus('hover', this.cardToCompare.cardId, cardId)
             }
             this.cardToCompare = null;
+            setTimeout(() => {
+                this.publish(CHANGE_DATA);
+            }, 1200);
         } else {
             this.cardToCompare = {
                 cardId,
                 cardDataId
             };
-            this.changeStatys('', this.cardToCompare.cardId)
+            this.changeStatus('', this.cardToCompare.cardId)
+            this.publish(CHANGE_DATA);
         }
-        setTimeout(() => {
-            this.publish('changeData');
-        }, 1200);
         if (this.attributes.every((card) => card.classList === 'hiden')) { return 'end'; }
     }
 
-    changeStatys(cardClass, firstCardId, secondCardId) {
+    changeStatus(cardClass, firstCardId, secondCardId) {
         this.attributes.forEach((card) => {
             if (card.id == firstCardId || card.id == secondCardId) {
                 card.classList = cardClass
@@ -68,7 +74,7 @@ class MatrixModel extends BaseModel {
 
     startNewGame() {
         this.attributes = this.createRandomList();
-        this.publish('changeData');
+        this.publish(CHANGE_DATA);
     }
 }
 

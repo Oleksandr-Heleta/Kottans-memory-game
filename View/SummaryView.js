@@ -10,7 +10,7 @@ class SummaryView extends BaseView {
     }
 
     beforeRender() {
-        this.summaryModel.subscribe('changeData', this.reRender, this);
+        this.summaryModel.subscribe(CHANGE_DATA, this.reRender, this);
     }
 
     render() {

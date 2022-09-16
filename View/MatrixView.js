@@ -11,11 +11,12 @@ class MatrixView extends BaseView {
     }
 
     beforeRender() {
-        this.matrixModel.subscribe('changeData', this.reRender, this);
+        this.matrixModel.subscribe(CHANGE_DATA, this.reRender, this);
     }
 
 
     render() {
+        console.log('render')
         let str = '';
         str = this.matrixModel.attributes
             .map((attributes, index) => new CardView(attributes))
@@ -28,8 +29,8 @@ class MatrixView extends BaseView {
     afterRender() {
         const tabletContant = document.getElementById('tablet');
         tabletContant.addEventListener('click', this.controller.onClickCard.bind(this.controller));
-        const newGameBtn = document.getElementById('newGameBtn');
-        newGameBtn.addEventListener('click', this.controller.onClickNewGame.bind(this.controller));
+        const gamesBtns = document.getElementById('gamesButtons');
+        gamesBtns.addEventListener('click', this.controller.onClickGameBtns.bind(this.controller));
     }
 
     afterUpdate() {

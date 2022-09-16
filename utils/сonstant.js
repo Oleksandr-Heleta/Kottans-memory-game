@@ -1,13 +1,19 @@
 const
-    IMAGE_URL = ['./img/cat1.png',
-        './img/cat2.png',
-        './img/cat3.png',
-        './img/cat4.png',
-        './img/cat5.png',
-        './img/cat6.png',
-        './img/cat7.png',
-        './img/cat8.png',
-        './img/cat9.png'];
+    IMAGE_URL = ['./img/cat1.jpg',
+        './img/cat2.jpg',
+        './img/cat3.jpg',
+        './img/cat4.jpg',
+        './img/cat5.jpg',
+        './img/cat6.jpg',
+        './img/cat7.jpg',
+        './img/cat8.jpg',
+        './img/cat9.jpg',
+        './img/cat10.jpg'],
+
+    LEVEL_BUTTONS = [12, 16, 20],
+    CHANGE_DATA = 'changeData',
+    GO_TO_MENU = 'goToMenu',
+    START_GAME = 'startGame';
 
 
 function templateStr(tpl, attributes) {
