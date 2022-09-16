@@ -8,6 +8,10 @@ body {
     background-image: url("../img/wallpaper-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 100vh;
 }
 
 h1 {
@@ -58,9 +62,30 @@ img {
     opacity: 0;
 }
 
+.buttonBlock {
+    margin-top: 10px;
+}
+
 .newGameBtn {
     margin: 0 auto;
     padding: 2px;
     font-family: 'Ms Madi', cursive;
     font-size: 1.5em;
+}
+
+@media (max-width: 460px) {
+    body {
+        height: 100vh;
+        background-size: 100% 100%;
+    }
+
+    img,
+    .flip-container,
+    .front,
+    .back {
+        width: 50px;
+        height: 65px;
+        border-radius: 5px;
+    }
+
 }

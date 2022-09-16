@@ -12,12 +12,9 @@ class Controller {
         const cardDataId = card.getAttribute('data-id');
         card.classList.toggle('hover');
 
-        setTimeout(() => {
-            const status = this.matrixModel.makeActionByClickCard(cardId, cardDataId);
-            this.summaryModel.makeActionByClickCard(1);
-            this.summaryModel.checkBestResult(status);
-        }, 2000);
-
+        const status = this.matrixModel.makeActionByClickCard(cardId, cardDataId);
+        this.summaryModel.makeActionByClickCard(1);
+        this.summaryModel.checkBestResult(status);
     }
 
     onClickNewGame() {

@@ -39,24 +39,26 @@ class MatrixModel extends BaseModel {
     makeActionByClickCard(cardId, cardDataId) {
         if (this.cardToCompare) {
             if (this.cardToCompare.cardDataId === cardDataId && this.cardToCompare.cardId !== cardId) {
-                this.changeStatys(this.cardToCompare.cardId, cardId, 'hiden');
+                this.changeStatys('hiden', this.cardToCompare.cardId, cardId);
                 localStorage.setItem('attributes', JSON.stringify(this.attributes));
             } else {
-                this.changeStatys(this.cardToCompare.cardId, cardId, 'hover')
+                this.changeStatys('hover', this.cardToCompare.cardId, cardId)
             }
             this.cardToCompare = null;
-            this.publish('changeData');
-            if (this.attributes.every((card) => card.classList === 'hiden')) { return 'end'; }
-
         } else {
             this.cardToCompare = {
                 cardId,
                 cardDataId
             };
+            this.changeStatys('', this.cardToCompare.cardId)
         }
+        setTimeout(() => {
+            this.publish('changeData');
+        }, 1200);
+        if (this.attributes.every((card) => card.classList === 'hiden')) { return 'end'; }
     }
 
-    changeStatys(firstCardId, secondCardId, cardClass) {
+    changeStatys(cardClass, firstCardId, secondCardId) {
         this.attributes.forEach((card) => {
             if (card.id == firstCardId || card.id == secondCardId) {
                 card.classList = cardClass
