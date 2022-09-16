@@ -11,12 +11,11 @@ class MatrixView extends BaseView {
     }
 
     beforeRender() {
-        this.matrixModel.subscribe(CHANGE_DATA, this.reRender, this);
+
     }
 
 
     render() {
-        console.log('render')
         let str = '';
         str = this.matrixModel.attributes
             .map((attributes, index) => new CardView(attributes))

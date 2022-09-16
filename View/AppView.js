@@ -11,6 +11,7 @@ class AppView {
     beforeRender() {
         this.menuModel.subscribe(GO_TO_MENU, this.reRenderToMenu, this);
         this.menuModel.subscribe(START_GAME, this.reRenderToGame, this);
+        this.matrixView.matrixModel.subscribe(CHANGE_DATA, this.matrixView.reRender, this.matrixView);
     }
 
     render(selector) {
@@ -34,4 +35,3 @@ class AppView {
 var appView = new AppView();
 appView.render('root');
 
-console.log(appView);

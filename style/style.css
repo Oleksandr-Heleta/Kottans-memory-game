@@ -11,11 +11,12 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 h1 {
     font-family: 'Ms Madi', cursive;
+    font-size: 2em;
 }
 
 img {
