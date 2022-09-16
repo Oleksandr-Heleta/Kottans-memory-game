@@ -50,17 +50,16 @@ class MatrixModel extends BaseModel {
                 this.changeStatus('hover', this.cardToCompare.cardId, cardId)
             }
             this.cardToCompare = null;
-            setTimeout(() => {
-                this.publish(CHANGE_DATA);
-            }, 1200);
         } else {
             this.cardToCompare = {
                 cardId,
                 cardDataId
             };
             this.changeStatus('', this.cardToCompare.cardId)
-            this.publish(CHANGE_DATA);
         }
+        setTimeout(() => {
+            this.publish(CHANGE_DATA);
+        }, 1200);
         if (this.attributes.every((card) => card.classList === 'hiden')) { return 'end'; }
     }
 
