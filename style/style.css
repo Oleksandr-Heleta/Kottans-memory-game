@@ -69,6 +69,7 @@ img {
     grid-template-columns: repeat(4, 1fr);
     justify-items: center;
     justify-content: center;
+    cursor: pointer;
 }
 
 .tablet-item {
@@ -93,6 +94,7 @@ img {
     padding: 2px;
     font-family: 'Ms Madi', cursive;
     font-size: 1.5em;
+    cursor: pointer;
 }
 
 
